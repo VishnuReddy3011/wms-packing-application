@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/wms-packing-application/static/css/main.04cba43f.css",
+    "main.js": "/wms-packing-application/static/js/main.5f1b08e8.js",
+    "static/js/453.8a13f5f0.chunk.js": "/wms-packing-application/static/js/453.8a13f5f0.chunk.js",
+    "index.html": "/wms-packing-application/index.html",
+    "main.04cba43f.css.map": "/wms-packing-application/static/css/main.04cba43f.css.map",
+    "main.5f1b08e8.js.map": "/wms-packing-application/static/js/main.5f1b08e8.js.map",
+    "453.8a13f5f0.chunk.js.map": "/wms-packing-application/static/js/453.8a13f5f0.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.04cba43f.css",
+    "static/js/main.5f1b08e8.js"
+  ]
+}

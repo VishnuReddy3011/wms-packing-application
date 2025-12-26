@@ -1,19 +1,20 @@
 import { useState } from "react";
+import ClientDropdown from "./ClientDropdown";
 import "./App.css";
 
-const CLIENTS = [
-  "mensa",
-  "libas",
-  "uspl",
-  "modenik",
-  "theindiangarageco",
-  "aramya",
-  "guess",
-  "campussutra",
-  "indoera",
-  "instakart",
-  "rocketcommerce",
-];
+const CLIENTS = {
+  Mensa: "mensa",
+  Libas: "libas",
+  USPL: "uspl",
+  Modenik: "modenik",
+  TIGC: "theindiangarageco",
+  Aramya: "aramya",
+  Guess: "guess",
+  CampusSutra: "campussutra",
+  Indoera: "indoera",
+  Instakart: "instakart",
+  Rocketcommerce: "rocketcommerce",
+};
 
 function App() {
   const [client, setClient] = useState("");
@@ -43,7 +44,7 @@ function App() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          client,
+          client: CLIENTS[client],
           subOrderId,
         }),
       });
@@ -72,23 +73,24 @@ function App() {
       <h2>WMS Packing Application</h2>
 
       <label>Client</label>
-      <select value={client} onChange={(e) => setClient(e.target.value)}>
-        <option value="">Select Client</option>
-        {CLIENTS.map((c) => (
-          <option key={c} value={c}>
-            {c}
-          </option>
-        ))}
-      </select>
+      <ClientDropdown value={client} onChange={setClient} options={CLIENTS} />
 
       <label>Sub Order ID</label>
       <input
-        type="number"
+        // type="number"
         placeholder="Enter Sub Order ID"
         onKeyDown={() => false}
         onWheel={() => false}
         value={subOrderId}
-        onChange={(e) => setSubOrderId(e.target.value)}
+        type="text"
+        inputMode="numeric"
+        pattern="[0-9]*"
+        // placeholder="Enter Sub Order ID"
+        // value={subOrderId}
+        onChange={(e) => setSubOrderId(e.target.value.replace(/\D/g, ""))}
+        // onFocus={(e) => e.target.select()}
+        onDoubleClick={(e) => e.target.select()}
+        // onChange={(e) => setSubOrderId(e.target.value)}
       />
 
       <button onClick={handlePack} disabled={loading}>
@@ -105,12 +107,13 @@ function App() {
         </div>
       )}
 
-      {parentOrderCode && (
-        <div className="order-info">
-          <span className="order-label">Parent Order Code:</span>
-          <span className="order-value">{parentOrderCode}</span>
-        </div>
-      )}
+      {parentOrderCode &&
+        parentOrderCode !== "NULL" && (
+          <div className="order-info">
+            <span className="order-label">Parent Order Code:</span>
+            <span className="order-value">{parentOrderCode}</span>
+          </div>
+        )}
       {successMessage && (
         <div className="message success">{successMessage}</div>
       )}

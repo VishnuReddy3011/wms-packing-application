@@ -33,6 +33,8 @@ function App() {
     setLoading(true);
     setFailureMessage("");
     setSuccessMessage("");
+    setChannelOrderId("");
+    setParentOrderCode("");
 
     try {
       const res = await fetch("https://node-backend-7dm0.onrender.com/api", {
@@ -96,8 +98,19 @@ function App() {
       {failureMessage && (
         <div className="message failure">{failureMessage}</div>
       )}
-      {channelOrderId && (<div>Channel Order ID: {channelOrderId}</div>)}
-      {parentOrderCode && (<div>Parent Order Code: {parentOrderCode}</div>)}
+      {channelOrderId && (
+        <div className="order-info">
+          <span className="order-label">Channel Order ID:</span>
+          <span className="order-value">{channelOrderId}</span>
+        </div>
+      )}
+
+      {parentOrderCode && (
+        <div className="order-info">
+          <span className="order-label">Parent Order Code:</span>
+          <span className="order-value">{parentOrderCode}</span>
+        </div>
+      )}
       {successMessage && (
         <div className="message success">{successMessage}</div>
       )}

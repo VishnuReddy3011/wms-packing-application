@@ -70,3 +70,26 @@ input[type=number]::-webkit-outer-spin-button {
     appearance: none;
     margin: 0; 
 }
+
+.order-info {
+  margin-top: 10px;
+  padding: 10px;
+  background: #f0f7ff;
+  border-left: 4px solid #1976d2;
+  border-radius: 4px;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-label {
+  font-weight: bold;
+  color: #333;
+}
+
+.order-value {
+  font-family: monospace;
+  color: #000000;
+  word-break: break-all;
+}

@@ -50,13 +50,13 @@ function App() {
 
       if (!res.ok) {
         setFailureMessage(data.message || "Something went wrong");
+        setChannelOrderId(data.channel_order_id || "");
+        setParentOrderCode(data.parent_order_code || "");
       } else {
         setSuccessMessage(
           data.message ||
             `Order packed successfully. Channel Order ID: ${data.channelOrderId}`
         );
-        setChannelOrderId(data.channel_order_id || "");
-        setParentOrderCode(data.parent_order_code || "");
       }
     } catch (err) {
       setFailureMessage("Server not reachable");

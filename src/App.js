@@ -20,6 +20,8 @@ function App() {
   const [subOrderId, setSubOrderId] = useState("");
   const [failureMessage, setFailureMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  const [channelOrderId, setChannelOrderId] = useState("");
+  const [parentOrderCode, setParentOrderCode] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handlePack = async () => {
@@ -53,6 +55,8 @@ function App() {
           data.message ||
             `Order packed successfully. Channel Order ID: ${data.channelOrderId}`
         );
+        setChannelOrderId(data.channel_order_id || "");
+        setParentOrderCode(data.parent_order_code || "");
       }
     } catch (err) {
       setFailureMessage("Server not reachable");
@@ -92,6 +96,8 @@ function App() {
       {failureMessage && (
         <div className="message failure">{failureMessage}</div>
       )}
+      {channelOrderId && (<div>Channel Order ID: {channelOrderId}</div>)}
+      {parentOrderCode && (<div>Parent Order Code: {parentOrderCode}</div>)}
       {successMessage && (
         <div className="message success">{successMessage}</div>
       )}

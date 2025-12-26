@@ -18,17 +18,19 @@ const CLIENTS = [
 function App() {
   const [client, setClient] = useState("");
   const [subOrderId, setSubOrderId] = useState("");
-  const [message, setMessage] = useState("");
+  const [failureMessage, setFailureMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handlePack = async () => {
     if (!client || !subOrderId) {
-      setMessage("Please select client and enter Sub Order ID");
+      setFailureMessage("Please select client and enter Sub Order ID");
       return;
     }
 
     setLoading(true);
-    setMessage("");
+    setFailureMessage("");
+    setSuccessMessage("");
 
     try {
       const res = await fetch("https://node-backend-7dm0.onrender.com/api", {
@@ -45,15 +47,15 @@ function App() {
       const data = await res.json();
 
       if (!res.ok) {
-        setMessage(data.message || "Something went wrong");
+        setFailureMessage(data.message || "Something went wrong");
       } else {
-        setMessage(
+        setSuccessMessage(
           data.message ||
             `Order packed successfully. Channel Order ID: ${data.channelOrderId}`
         );
       }
     } catch (err) {
-      setMessage("Server not reachable");
+      setFailureMessage("Server not reachable");
     } finally {
       setLoading(false);
     }
@@ -87,7 +89,12 @@ function App() {
         {loading ? "Packing..." : "Pack"}
       </button>
 
-      {message && <div className="message">{message}</div>}
+      {failureMessage && (
+        <div className="message failure">{failureMessage}</div>
+      )}
+      {successMessage && (
+        <div className="message success">{successMessage}</div>
+      )}
     </div>
   );
 }

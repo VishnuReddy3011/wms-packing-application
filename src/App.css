@@ -51,8 +51,16 @@ button:disabled {
 .message {
   margin-top: 15px;
   padding: 10px;
-  background: #eef5ff;
-  border-left: 4px solid #1976d2;
+  background: #fff3ee;
+  border-left: 4px solid red;
+  font: 14px Arial, sans-serif;
+  color: red;
+}
+
+.message.success {
+  background: #e6ffed;
+  border-left: 4px solid green;
+  color: green;
 }
 
 input[type=number]::-webkit-inner-spin-button, 

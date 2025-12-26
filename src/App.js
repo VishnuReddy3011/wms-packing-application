@@ -14,6 +14,10 @@ const CLIENTS = {
   Indoera: "indoera",
   Instakart: "instakart",
   Rocketcommerce: "rocketcommerce",
+  "Shakti Brandz": "shaktibrandz",
+  "JG Hosiery (Sporto)": "jghosiery",
+  Vmart: "vmart",
+  Thimblerr: "thimblerr",
 };
 
 function App() {

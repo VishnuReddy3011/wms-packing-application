@@ -18,6 +18,7 @@ const CLIENTS = {
   "JG Hosiery (Sporto)": "jghosiery",
   Vmart: "vmart",
   Thimblerr: "thimblerr",
+  Cjdarcl: "cjdarcl",
 };
 
 function App() {

@@ -66,7 +66,7 @@ function App() {
         );
       }
     } catch (err) {
-      setFailureMessage("Server not reachable");
+      setFailureMessage(err);
     } finally {
       setLoading(false);
     }
